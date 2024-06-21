@@ -1,16 +1,126 @@
 #VRML_SIM R2023b utf8
+
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.5773 0.5773 0.5773 2.0944
-  position 0 0 10
+  orientation -0.16425373477069682 0.010835080367390535 0.9863586120916216 3.1573809803453448
+  position 5.697528118938816 0.04126366776025055 2.7753115391221943
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
 }
 RectangleArena {
+  floorSize 6 2
+  wallHeight 1
+}
+Solid {
+  translation -2 0 0.6
+  rotation 1 0 0 1.5708
+  children [
+    CadShape {
+      url [
+        "../cads/test.obj"
+      ]
+    }
+  ]
+}
+Robot {
+  translation 2 0.45 1.59
+  children [
+    Solid {
+      translation 0 0 0.1
+      children [
+        HingeJoint {
+          jointParameters HingeJointParameters {
+          }
+          device [
+            RotationalMotor {
+            }
+          ]
+          endPoint Solid {
+            children [
+              Transform {
+                translation 2.0134e-06 -0.6 -1
+                rotation -0.577349935856137 0.577349935856137 0.5773509358560258 2.09439
+                children [
+                  CadShape {
+                    url [
+                      "../cads/kij.obj"
+                    ]
+                  }
+                ]
+              }
+            ]
+            name "Kij"
+          }
+        }
+        HingeJoint {
+          jointParameters HingeJointParameters {
+          }
+          device [
+            RotationalMotor {
+            }
+          ]
+          endPoint Solid {
+            translation 0 0 1.96
+            children [
+              Solid {
+                translation 0 0 -3
+                children [
+                  Shape {
+                    appearance Appearance {
+                      material Material {
+                        ambientIntensity 0.8
+                        diffuseColor 0.417533 0.4094 0.294423
+                        shininess 0.4
+                      }
+                    }
+                    geometry Box {
+                      size 0.4 0.4 0.1
+                    }
+                  }
+                ]
+                name "Baza"
+              }
+            ]
+          }
+        }
+        Transform {
+          translation 0 -0.26 0.96
+          children [
+            Shape {
+              appearance Appearance {
+                material Material {
+                  ambientIntensity 0.8
+                  diffuseColor 0.417533 0.4094 0.294423
+                  shininess 0.4
+                }
+              }
+              geometry Box {
+                size 0.2 0.7 0.1
+              }
+            }
+          ]
+        }
+        Shape {
+          appearance Appearance {
+            material Material {
+              ambientIntensity 0.8
+              diffuseColor 0.825223 0.837415 0.657832
+              shininess 0.4
+            }
+          }
+          geometry Cylinder {
+            radius 0.05
+          }
+        }
+      ]
+      name "robot_model"
+    }
+  ]
 }
