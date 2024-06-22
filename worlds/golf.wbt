@@ -3,14 +3,13 @@
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/balls/protos/Ball.proto"
 
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.31184002620315315 0.4027924027400541 0.8605312768008557 1.3651796723058276
-  position 0.5670573534898549 -2.4096831228856863 3.2767409457012753
+  orientation -0.23869979226576174 0.21932452660057714 0.9460016708250124 1.5793999634174276
+  position 1.4983293835671065 -4.602569166428813 3.5474254651585446
 }
 TexturedBackground {
 }
@@ -30,6 +29,14 @@ Solid {
       ]
     }
   ]
+  name "cad"
+  model "floor"
+  boundingObject Mesh {
+    url [
+      "../cads/test.obj"
+    ]
+  }
+  locked TRUE
 }
 Robot {
   translation 2 0.45 1.59
@@ -47,13 +54,24 @@ Robot {
           endPoint Solid {
             children [
               Pose {
-                translation 2.0134e-06 -0.6 -1
+                translation 0.0100005 -0.609996 -0.980006
                 rotation -0.577349935856137 0.577349935856137 0.5773509358560258 2.09439
                 children [
-                  CadShape {
-                    url [
-                      "../cads/kij.obj"
+                  Solid {
+                    children [
+                      CadShape {
+                        url [
+                          "../cads/kij.obj"
+                        ]
+                        castShadows FALSE
+                        isPickable FALSE
+                      }
                     ]
+                    boundingObject Mesh {
+                      url [
+                        "../cads/kij.obj"
+                      ]
+                    }
                   }
                 ]
               }
@@ -139,27 +157,7 @@ Solid {
   ]
   name "solid(1)"
 }
-Floor {
-  translation 0.42 0 0.595
-  size 4.3 2
-}
-Floor {
-  translation -2.65 0 0.595
-  name "floor(1)"
-  size 0.73 2
-}
-Floor {
-  translation -2.01 0.66 0.595
-  name "floor(2)"
-  size 0.555 0.75
-}
-Floor {
-  translation -2.01 -0.67 0.595
-  name "floor(3)"
-  size 0.555 0.75
-}
 Ball {
-  hidden linearVelocity_0 0 0 -4.47368328289574e-16
   translation 1.6466881492893841 0 0.704978418
   rotation 0 1 0 3.404645856653577e-13
   color 0.843137 0.843137 0.843137
