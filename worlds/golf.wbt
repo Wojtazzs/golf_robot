@@ -4,13 +4,13 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/balls/protos/PingPongBall.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/balls/protos/Ball.proto"
 
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.1785822298831988 0.8755595205532931 0.4488918724352578 0.633804587750619
-  position 1.2010104581550802 0.43829270073451265 0.8948059512389915
+  orientation -0.31184002620315315 0.4027924027400541 0.8605312768008557 1.3651796723058276
+  position 0.5670573534898549 -2.4096831228856863 3.2767409457012753
 }
 TexturedBackground {
 }
@@ -158,9 +158,10 @@ Floor {
   name "floor(3)"
   size 0.555 0.75
 }
-PingPongBall {
-  hidden linearVelocity_0 0.0007359993310963311 2.8739305356170957e-06 1.455187902412679e-15
-  hidden angularVelocity_0 -0.00014344812501241588 0.03673635209609933 -9.780666417500875e-05
-  translation 1.605493063947223 0.6018574560523238 0.614998895446182
-  rotation 0.9864164473442959 0.0009877924073904215 -0.16426081904951653 3.1231753842348478
+Ball {
+  hidden linearVelocity_0 0 0 -4.47368328289574e-16
+  translation 1.6466881492893841 0 0.704978418
+  rotation 0 1 0 3.404645856653577e-13
+  color 0.843137 0.843137 0.843137
+  radius 0.11
 }
