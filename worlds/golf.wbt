@@ -6,10 +6,11 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/balls/protos/Ball.proto"
 
 WorldInfo {
+  basicTimeStep 16
 }
 Viewpoint {
-  orientation -0.2497163166946132 -0.005121721612203698 0.96830549370754 3.0633404679522673
-  position 7.290308141434561 -0.29788495534126425 3.644473124983796
+  orientation -0.22574126710309841 -0.001308529540922009 0.9741864134123039 3.022216853997713
+  position 5.389923632967628 -0.31444013171624 3.651675733888662
 }
 TexturedBackground {
 }
@@ -47,15 +48,18 @@ Robot {
         HingeJoint {
           jointParameters HingeJointParameters {
             axis 0 1 0
-            anchor 0 0 1
+            anchor 0.000137119 -0.580963 1.00196
           }
           device [
             RotationalMotor {
+              name "kij_motor"
+              acceleration 10
+              maxTorque 3000
             }
           ]
           endPoint Solid {
-            translation 9.213970336138799e-05 -0.5790285366177974 -1.0014228966135712
-            rotation -0.5773879900139169 0.5773600575581499 0.577302756726606 2.0942487482215353
+            translation 0.00013734221122433722 -0.5809631516717332 -1.001995230503986
+            rotation -0.5775755000226778 0.5775447387767815 0.5769303393693326 2.0948059539483044
             children [
               CadShape {
                 url [
@@ -72,6 +76,7 @@ Robot {
               ]
             }
             physics Physics {
+              density 3000
             }
           }
         }
@@ -107,7 +112,7 @@ Robot {
           }
         }
         Pose {
-          translation 0 -0.26 0.96
+          translation 0 -0.23 0.96
           children [
             Shape {
               appearance Appearance {
@@ -118,7 +123,7 @@ Robot {
                 }
               }
               geometry Box {
-                size 0.2 0.7 0.1
+                size 0.2 0.6 0.1
               }
             }
           ]
@@ -139,6 +144,7 @@ Robot {
       name "robot_model"
     }
   ]
+  controller "test"
 }
 Solid {
   translation 1.88 -0.26 0.64
