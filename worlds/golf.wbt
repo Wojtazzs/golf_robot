@@ -6,7 +6,7 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/balls/protos/Ball.proto"
 
 WorldInfo {
-  basicTimeStep 16
+  basicTimeStep 4
 }
 Viewpoint {
   orientation -0.22574126710309841 -0.001308529540922009 0.9741864134123039 3.022216853997713
@@ -49,17 +49,23 @@ Robot {
           jointParameters HingeJointParameters {
             axis 0 1 0
             anchor 0.000137119 -0.580963 1.00196
+            minStop -3.14
+            maxStop 3.14
           }
           device [
+            PositionSensor {
+              name "kij_position"
+            }
             RotationalMotor {
               name "kij_motor"
-              acceleration 10
+              acceleration 1
+              maxVelocity 5
               maxTorque 3000
             }
           ]
           endPoint Solid {
             translation 0.00013734221122433722 -0.5809631516717332 -1.001995230503986
-            rotation -0.5775755000226778 0.5775447387767815 0.5769303393693326 2.0948059539483044
+            rotation -0.5775755000226777 0.5775447387767814 0.5769303393693325 2.0948059539483044
             children [
               CadShape {
                 url [
