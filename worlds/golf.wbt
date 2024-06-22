@@ -8,8 +8,8 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.23869979226576174 0.21932452660057714 0.9460016708250124 1.5793999634174276
-  position 1.4983293835671065 -4.602569166428813 3.5474254651585446
+  orientation -0.2497163166946132 -0.005121721612203698 0.96830549370754 3.0633404679522673
+  position 7.290308141434561 -0.29788495534126425 3.644473124983796
 }
 TexturedBackground {
 }
@@ -46,37 +46,33 @@ Robot {
       children [
         HingeJoint {
           jointParameters HingeJointParameters {
+            axis 0 1 0
+            anchor 0 0 1
           }
           device [
             RotationalMotor {
             }
           ]
           endPoint Solid {
+            translation 9.213970336138799e-05 -0.5790285366177974 -1.0014228966135712
+            rotation -0.5773879900139169 0.5773600575581499 0.577302756726606 2.0942487482215353
             children [
-              Pose {
-                translation 0.0100005 -0.609996 -0.980006
-                rotation -0.577349935856137 0.577349935856137 0.5773509358560258 2.09439
-                children [
-                  Solid {
-                    children [
-                      CadShape {
-                        url [
-                          "../cads/kij.obj"
-                        ]
-                        castShadows FALSE
-                        isPickable FALSE
-                      }
-                    ]
-                    boundingObject Mesh {
-                      url [
-                        "../cads/kij.obj"
-                      ]
-                    }
-                  }
+              CadShape {
+                url [
+                  "../cads/kij.obj"
                 ]
+                castShadows FALSE
+                isPickable FALSE
               }
             ]
-            name "Kij"
+            name "kijcad"
+            boundingObject Mesh {
+              url [
+                "../cads/kij.obj"
+              ]
+            }
+            physics Physics {
+            }
           }
         }
         HingeJoint {
@@ -162,4 +158,5 @@ Ball {
   rotation 0 1 0 3.404645856653577e-13
   color 0.843137 0.843137 0.843137
   radius 0.11
+  mass 0.2
 }
