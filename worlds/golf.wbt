@@ -9,8 +9,8 @@ WorldInfo {
   basicTimeStep 4
 }
 Viewpoint {
-  orientation -0.3683120601075041 0.8171075421845365 0.4434878700534121 1.5871508184611305
-  position 1.1847874270858871 -0.23358493309850376 2.7409902433485183
+  orientation -0.309556576071977 0.8438426053337704 0.43829714080074594 1.3938929706844767
+  position 0.33997530889137634 -0.8257035575987577 4.860195426417084
 }
 TexturedBackground {
 }
@@ -76,8 +76,8 @@ Robot {
                   }
                 ]
                 endPoint Solid {
-                  translation 0.0001088944076162375 -0.5809631516717332 -1.0019952303052504
-                  rotation -0.5775700386818364 0.5775474685298949 0.5769330741184562 2.094814152693397
+                  translation 0.00010889440761623901 -0.5809631516717332 -1.0019952303052584
+                  rotation -0.5775700386818341 0.5775474685298977 0.5769330741184556 2.094814152693388
                   children [
                     CadShape {
                       url [
@@ -147,7 +147,7 @@ Robot {
       name "Baza"
     }
   ]
-  controller "<none>"
+  controller "test"
 }
 Solid {
   translation 1.65 -0.26 0.64
@@ -165,31 +165,8 @@ Solid {
     size 0.3 0.1 0.1
   }
 }
-Solid {
-  translation 1.65 0.27 0.58
-  children [
-    Shape {
-      appearance Appearance {
-      }
-      geometry Box {
-        size 0.3 0.1 0.1
-      }
-    }
-  ]
-  name "solid(2)"
-  boundingObject Box {
-    size 0.3 0.1 0.1
-  }
-}
 Ball {
   translation 1.66005 0.539505 1.48447
-  color 0.843137 0 0
-  radius 0.11
-  mass 0.2
-}
-Ball {
-  translation 1.66005 0.539505 1.91447
-  name "ball(3)"
   color 0.843137 0 0
   radius 0.11
   mass 0.2
@@ -210,8 +187,40 @@ Ball {
   mass 0.2
 }
 Robot {
-  translation 1.67 0.5 0.62
+  translation 2.68 0.5 0.62
   children [
+    Solid {
+      translation -0.02 -0.23 -0.05
+      children [
+        Shape {
+          appearance Appearance {
+          }
+          geometry Box {
+            size 0.3 0.1 0.1
+          }
+        }
+      ]
+      name "solid(13)"
+      boundingObject Box {
+        size 0.3 0.1 0.1
+      }
+    }
+    Solid {
+      translation -0.03 0.37 0.36
+      children [
+        Shape {
+          appearance Appearance {
+          }
+          geometry Box {
+            size 0.3 0.1 0.1
+          }
+        }
+      ]
+      name "solid(12)"
+      boundingObject Box {
+        size 0.3 0.1 0.1
+      }
+    }
     SliderJoint {
       jointParameters JointParameters {
         axis 0 1 0

@@ -33,10 +33,12 @@ def next_ball():
     robot.step(128*timestep)
     ball_top_lock.setPosition(-0.1)
     robot.step(timestep)
+    ball_top_lock.setForce(10.0)
     ball_top_lock.setPosition(0.2)
     robot.step(128*timestep)
 
-next_ball()
+for _ in range(3):
+    next_ball()
 
 # Main loop:
 # - perform simulation steps until Webots is stopping the controller

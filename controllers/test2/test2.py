@@ -1,4 +1,4 @@
-"""test controller."""
+"""test2 controller."""
 
 # You may need to import some classes of the controller module. Ex:
 #  from controller import Robot, Motor, DistanceSensor
@@ -13,40 +13,35 @@ kij_position = robot.getDevice("kij_position")
 
 arm_motor = robot.getDevice("rotational motor")
 
-arm_motor.setPosition(1.0)
-
 kij_position.enable(1000)
 
 class Angle():
     val = 0
+
     def set_val(self, val):
         self.val = val*pi
         return self.val
-    
+
 
 F = 2.0   # frequency 2 Hz
 t = 0.0   # elapsed simulation time
 angle = Angle()
 
+arm_motor.setPosition(1)
+
+
 to_pos = 3.14
 starting_pos = False
 while robot.step(TIME_STEP) != -1:
     pos = kij_position.getValue()
-    
-    if starting_pos == False:
+    print(pos)
+
+    if not starting_pos:
         kij_motor.setPosition(-1)
         if pos <= 0.0:
             starting_pos = True
         continue
-            
+
     if pos >= 3.13 or pos <= -3.13:
         to_pos = -to_pos
-    kij_motor.setPosition(to_pos)   
-    #if kij_motor.
-    #position = angle.set_val(t)
-    #print(position)
-    #kij_motor.setPosition(position)
-    #kij_motor.setVelocity(10.0)
-    #t += TIME_STEP / 100.0
-
-    pass
+    kij_motor.setPosition(0.0)
