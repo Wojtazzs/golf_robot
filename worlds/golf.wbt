@@ -9,8 +9,8 @@ WorldInfo {
   basicTimeStep 4
 }
 Viewpoint {
-  orientation -0.3067171212870006 -0.009718757270954137 0.9517510983794679 3.2023512637997595
-  position 10.882123623110814 -2.656891725986572 7.363475276240049
+  orientation -0.2868862134661428 0.07122234623493728 0.9553133925156967 2.6763590628048792
+  position 8.361031953102277 -3.0879133651336397 7.386297316046291
 }
 TexturedBackground {
 }
@@ -18,15 +18,16 @@ TexturedBackgroundLight {
 }
 RectangleArena {
   floorSize 6 6
-  wallHeight 1
+  wallThickness 0.05
+  wallHeight 0.85
 }
 Solid {
-  translation -2 2 0.6
+  translation 2 -2 0.6
   rotation 1 0 0 1.5708
   children [
     CadShape {
       url [
-        "../cads/test2.obj"
+        "../cads/test3.obj"
       ]
     }
   ]
@@ -34,7 +35,7 @@ Solid {
   model "floor"
   boundingObject Mesh {
     url [
-      "../cads/test2.obj"
+      "../cads/test3.obj"
     ]
   }
   locked TRUE
@@ -78,7 +79,7 @@ Robot {
                 ]
                 endPoint Solid {
                   translation 0.0001088944076162375 -0.5809631516717332 -1.0019952303052504
-                  rotation -0.5775700386818364 0.5775474685298949 0.5769330741184562 2.094814152693397
+                  rotation -0.577570038681835 0.5775474685298966 0.5769330741184561 2.0948141526933957
                   children [
                     CadShape {
                       url [
@@ -148,7 +149,7 @@ Robot {
       name "Baza"
     }
   ]
-  controller "<none>"
+  controller "test"
 }
 Solid {
   translation 1.56 -2.78 0.64
@@ -197,7 +198,7 @@ Ball {
   mass 0.2
 }
 Ball {
-  translation 1.68485 -2.45489 0.709976
+  translation 1.68485 -2.50489 0.709976
   name "ball(1)"
   color 0.843137 0 0
   radius 0.11

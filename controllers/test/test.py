@@ -36,7 +36,7 @@ while robot.step(TIME_STEP) != -1:
         continue
             
     if pos >= 3.13 or pos <= -3.13:
-        to_pos = -to_pos
+        to_pos = 0
     kij_motor.setPosition(to_pos)   
     #if kij_motor.
     #position = angle.set_val(t)
