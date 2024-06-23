@@ -13,7 +13,12 @@ kij_position = robot.getDevice("kij_position")
 
 arm_motor = robot.getDevice("rotational motor")
 
-arm_motor.setPosition(1.0)
+top_blocks = []
+
+for i in range(2):
+    top_blocks.append(robot.getDevice(f"ball top block {i}"))
+
+# arm_motor.setPosition(1.0)
 
 kij_position.enable(1000)
 
