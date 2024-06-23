@@ -9,24 +9,24 @@ WorldInfo {
   basicTimeStep 4
 }
 Viewpoint {
-  orientation -0.3683120601075041 0.8171075421845365 0.4434878700534121 1.5871508184611305
-  position 1.1847874270858871 -0.23358493309850376 2.7409902433485183
+  orientation -0.3067171212870006 -0.009718757270954137 0.9517510983794679 3.2023512637997595
+  position 10.882123623110814 -2.656891725986572 7.363475276240049
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
 }
 RectangleArena {
-  floorSize 6 2
+  floorSize 6 6
   wallHeight 1
 }
 Solid {
-  translation -2 0 0.6
+  translation -2 2 0.6
   rotation 1 0 0 1.5708
   children [
     CadShape {
       url [
-        "../cads/test.obj"
+        "../cads/test2.obj"
       ]
     }
   ]
@@ -34,13 +34,14 @@ Solid {
   model "floor"
   boundingObject Mesh {
     url [
-      "../cads/test.obj"
+      "../cads/test2.obj"
     ]
   }
   locked TRUE
 }
 Robot {
-  translation 2 0.45 1.57
+  translation 2 -2.06 1.57
+  rotation 5.672099200659476e-09 -0.7886308888621998 -0.6148669133498864 -5.307179586466759e-06
   children [
     Solid {
       translation 0 0 -0.96
@@ -150,7 +151,8 @@ Robot {
   controller "<none>"
 }
 Solid {
-  translation 1.65 -0.26 0.64
+  translation 1.56 -2.78 0.64
+  rotation 0 0 1 4.692820414042842e-06
   children [
     Shape {
       appearance Appearance {
@@ -166,7 +168,7 @@ Solid {
   }
 }
 Solid {
-  translation 1.65 0.27 0.58
+  translation 1.53 -2.13 0.65
   children [
     Shape {
       appearance Appearance {
@@ -182,35 +184,27 @@ Solid {
   }
 }
 Ball {
-  translation 1.66005 0.539505 1.48447
+  translation 1.53005 -1.96049 1.48447
   color 0.843137 0 0
   radius 0.11
   mass 0.2
 }
 Ball {
-  translation 1.66005 0.539505 1.91447
+  translation 1.55005 -1.95049 1.82447
   name "ball(3)"
   color 0.843137 0 0
   radius 0.11
   mass 0.2
 }
 Ball {
-  translation 1.6600543493472446 0.45950475696407445 0.8544668229830951
-  rotation 0.9890574714340474 0.14682898053250534 0.014372497217728463 2.3148924950422445
-  name "ball(2)"
-  color 0.843137 0 0
-  radius 0.11
-  mass 0.2
-}
-Ball {
-  translation 1.68485 0.055111 0.709976
+  translation 1.68485 -2.45489 0.709976
   name "ball(1)"
   color 0.843137 0 0
   radius 0.11
   mass 0.2
 }
 Robot {
-  translation 1.67 0.5 0.62
+  translation 1.54 -1.98 0.62
   children [
     SliderJoint {
       jointParameters JointParameters {
