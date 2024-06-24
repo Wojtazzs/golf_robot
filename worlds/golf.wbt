@@ -9,15 +9,16 @@ WorldInfo {
   basicTimeStep 4
 }
 Viewpoint {
-  orientation 0 0 1 4.71238898038469
-  position 2.66683249027328 2.376993951818164 0.9080493026509261
+  orientation -0.024361312573397288 0.07698730777979237 0.9967344084010146 0.8882964521052295
+  position 1.1025338613165487 -7.593346064515871 1.8285621075774325
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
 }
 RectangleArena {
-  floorSize 6 2
+  translation 0 -1.99 0
+  floorSize 6 6
   wallHeight 1
 }
 Solid {
@@ -26,7 +27,7 @@ Solid {
   children [
     CadShape {
       url [
-        "../cads/test.obj"
+        "../cads/cads/test2.obj"
       ]
     }
   ]
@@ -34,18 +35,18 @@ Solid {
   model "floor"
   boundingObject Mesh {
     url [
-      "../cads/test.obj"
+      "../cads/cads/test2.obj"
     ]
   }
   locked TRUE
 }
-Robot {
-  translation 2 0.45 1.57
+DEF ROBOT Robot {
+  translation 2.71 -4.31 1.57
   children [
-    Solid {
+    DEF BASE Solid {
       translation 0 0 -0.96
       children [
-        HingeJoint {
+        DEF MODEL HingeJoint {
           jointParameters HingeJointParameters {
             axis 0 0 1
           }
@@ -53,15 +54,32 @@ Robot {
             RotationalMotor {
             }
           ]
-          endPoint Solid {
-            translation 0 0 1.05
+          endPoint DEF SOLID Solid {
+            translation 0.01 0 1.05
             children [
               Solid {
+                translation -1.32395e-06 -0.3 1.05
+                rotation -1.40702e-06 2.72391e-07 1 -3.1415853071795863
+                children [
+                  Shape {
+                    appearance PBRAppearance {
+                    }
+                    geometry Cylinder {
+                      height 0.1
+                      radius 0.05
+                    }
+                  }
+                  Camera {
+                  }
+                ]
+              }
+              DEF DISPENSER Solid {
                 translation -0.25 -0.31 1.01
                 rotation 0 0 1 -1.5707953071795862
                 children [
-                  SliderJoint {
+                  DEF sj0 SliderJoint {
                     jointParameters JointParameters {
+                      position 0.3
                       axis 0 1 0
                     }
                     device [
@@ -69,8 +87,8 @@ Robot {
                         name "ball top block 0"
                       }
                     ]
-                    endPoint Solid {
-                      translation 0 0.04 0.48
+                    endPoint DEF bbs0 Solid {
+                      translation 0 0.010000000000000009 0.42
                       children [
                         Shape {
                           appearance PBRAppearance {
@@ -82,12 +100,40 @@ Robot {
                         }
                       ]
                       name "solid(9)"
-                      boundingObject Box {
+                      boundingObject DEF bb0 Box {
                         size 0.1 0.1 0.01
                       }
                     }
                   }
                   SliderJoint {
+                    jointParameters JointParameters {
+                      position 0.3
+                      axis 0 1 0
+                    }
+                    device [
+                      LinearMotor {
+                        name "ball top block q"
+                      }
+                    ]
+                    endPoint Solid {
+                      translation 0 0.010000000000000009 0
+                      children [
+                        Shape {
+                          appearance PBRAppearance {
+                            metalness 0
+                          }
+                          geometry Box {
+                            size 0.1 0.1 0.001
+                          }
+                        }
+                      ]
+                      name "solid(6)"
+                      boundingObject Box {
+                        size 0.1 0.1 0.01
+                      }
+                    }
+                  }
+                  DEF sj1 SliderJoint {
                     jointParameters JointParameters {
                       axis 0 1 0
                     }
@@ -96,8 +142,8 @@ Robot {
                         name "ball top block 1"
                       }
                     ]
-                    endPoint Solid {
-                      translation 0 0.04 0.73
+                    endPoint DEF bbs1 Solid {
+                      translation 0 0.04 0.72
                       children [
                         Shape {
                           appearance PBRAppearance {
@@ -109,21 +155,21 @@ Robot {
                         }
                       ]
                       name "solid(3)"
-                      boundingObject Box {
-                        size 0.1 0.1 0.01
+                      boundingObject DEF bb1 Box {
+                        size 0.1 0.01 0.01
                       }
                     }
                   }
-                  SliderJoint {
+                  DEF sj2 SliderJoint {
                     jointParameters JointParameters {
                       axis 0 1 0
                     }
                     device [
                       LinearMotor {
-                        name "ball top block 1"
+                        name "ball top block 2"
                       }
                     ]
-                    endPoint Solid {
+                    endPoint DEF bbs2 Solid {
                       translation 0 0.04 1
                       children [
                         Shape {
@@ -136,14 +182,14 @@ Robot {
                         }
                       ]
                       name "solid(4)"
-                      boundingObject Box {
-                        size 0.1 0.1 0.01
+                      boundingObject DEF bb2 Box {
+                        size 0.1 0.01 0.01
                       }
                     }
                   }
                   Solid {
-                    translation 0.17003200000000002 0.1499999999999999 0.07949733000000592
-                    rotation -1.4517501666371512e-06 -0.9999999999987795 -5.774795795099199e-07 1.570792500951718
+                    translation 0.1700319999999449 0.1499999999999857 0.07160790999996536
+                    rotation -1.4517501094857412e-06 -0.9999999999987793 -5.774797753793547e-07 1.5707925009516284
                     children [
                       Shape {
                         appearance PBRAppearance {
@@ -162,8 +208,8 @@ Robot {
                     }
                   }
                   Solid {
-                    translation -0.18003200000000014 0.1499999999999999 0.0794974300000062
-                    rotation 5.791757245826375e-07 -0.9999999999987541 1.468358719039798e-06 1.5707981103895554
+                    translation -0.18003199999994557 0.14999999999996172 0.07160800999996564
+                    rotation 5.791757346311752e-07 -0.9999999999987541 1.4683587444751589e-06 1.5707981103897106
                     children [
                       Shape {
                         appearance PBRAppearance {
@@ -182,8 +228,8 @@ Robot {
                     }
                   }
                   Solid {
-                    translation 0.159971 0.05 0.659211
-                    rotation -0.5773499358311838 -0.5773509358347605 0.5773499359023557 2.094395307114814
+                    translation 0.16015692426558115 0.049995417413648546 0.6361604488008172
+                    rotation -0.5773392951725427 -0.5773427834481109 0.5773687285003055 2.094369943748204
                     children [
                       Shape {
                         appearance PBRAppearance {
@@ -202,8 +248,8 @@ Robot {
                     }
                   }
                   Solid {
-                    translation -0.180029 0.05 0.659211
-                    rotation -0.5773499358311838 -0.5773509358347605 0.5773499359023557 2.094395307114814
+                    translation -0.18011147933613358 0.050008083095564704 0.6361263071872574
+                    rotation -0.5773560144564933 -0.5773531140190735 0.5773416789938105 2.0944075547179515
                     children [
                       Shape {
                         appearance PBRAppearance {
@@ -222,8 +268,8 @@ Robot {
                     }
                   }
                   Solid {
-                    translation -0.01003070000000017 -0.11999999999999988 0.7290968400000057
-                    rotation 1 0 0 1.5708000000000002
+                    translation -0.010024642672813222 -0.12018038321383573 0.684498824646973
+                    rotation 0.999999999998709 9.227719768521568e-07 -1.315389621074551e-06 1.5708368445694945
                     children [
                       Shape {
                         appearance PBRAppearance {
@@ -242,8 +288,8 @@ Robot {
                     }
                   }
                   Solid {
-                    translation -0.01003070000000017 0.16999999999999993 0.8793346600000085
-                    rotation 1 0 0 1.5708000000000002
+                    translation -0.010036652138167845 0.17011187635378588 0.8637921561003057
+                    rotation 0.9999999999973126 8.986838573859404e-07 2.1371203403414957e-06 1.5707914789572834
                     children [
                       Shape {
                         appearance PBRAppearance {
@@ -261,18 +307,41 @@ Robot {
                     physics Physics {
                     }
                   }
+                  Solid {
+                    translation -0.01003543716866595 0.17009428568768348 0.4037849742355797
+                    rotation 0.9999999999980791 7.878140993251307e-07 1.7948352244236918e-06 1.5707931356700888
+                    children [
+                      Shape {
+                        appearance PBRAppearance {
+                          metalness 0
+                        }
+                        geometry Box {
+                          size 0.4 0.5 0.05
+                        }
+                      }
+                    ]
+                    name "solid(7)"
+                    boundingObject Box {
+                      size 0.4 0.5 0.05
+                    }
+                    physics Physics {
+                    }
+                  }
                 ]
                 name "dispenser"
               }
               HingeJoint {
                 jointParameters HingeJointParameters {
-                  position 1.4199510868716695e-05
+                  position -8.016340903903742e-05
                   axis 0 1 0
                   anchor 0.000137119 -0.580963 1.00196
                   minStop -3.14
                   maxStop 3.14
                 }
                 device [
+                  Brake {
+                    name "kij_brake"
+                  }
                   PositionSensor {
                     name "kij_position"
                   }
@@ -284,8 +353,8 @@ Robot {
                   }
                 ]
                 endPoint Solid {
-                  translation 0.0001088918508904334 -0.5809631516717332 -1.0019952303052118
-                  rotation -0.577570038191003 0.5775474687752309 0.5769330743642344 2.0948141534301943
+                  translation 0.0002979909176315967 -0.5809631516717332 -1.00199522404775
+                  rotation -0.5776063409744057 0.5775293227534386 0.5769148951328205 2.0947596552187577
                   children [
                     CadShape {
                       url [
@@ -355,272 +424,37 @@ Robot {
       name "Baza"
     }
   ]
-  controller "test"
-}
-Solid {
-  translation 1.65 -0.26 0.64
-  children [
-    Shape {
-      appearance Appearance {
-      }
-      geometry Box {
-        size 0.3 0.1 0.1
-      }
-    }
-  ]
-  name "solid(1)"
-  boundingObject Box {
-    size 0.3 0.1 0.1
-  }
+  controller "auto_player"
 }
 Ball {
-  translation 2.690754210711795 0.5338700001071875 1.4649607600000005
-  rotation 1.7500752077157267e-07 0.9999999999927949 3.7920232448957563e-06 0.005901472124104952
-  color 0.843137 0 0
-  radius 0.11
-  mass 0.2
-}
-Ball {
-  translation 2.7049707539579875 0.5295042962857633 1.2149607627485948
-  rotation 3.7130613614841013e-06 -0.9999999999869602 -3.5061299969276478e-06 1.0626853119660762
-  name "ball(2)"
-  color 0.843137 0 0
-  radius 0.11
-  mass 0.2
-}
-Ball {
-  translation 1.6848499999999964 0.05467151776454989 0.7099609608204401
-  name "ball(1)"
-  color 0.843137 0 0
-  radius 0.11
-  mass 0.2
-}
-Ball {
-  translation 1.75485 0.134672 3.26996
+  translation -2.543956448042907 -4.634379379660783 0.10996076111670082
+  rotation -0.0173036277005633 0.12961157449562336 0.9914138511364293 2.384988385232052
   name "ball(3)"
   color 0.843137 0 0
   radius 0.11
   mass 0.2
 }
 Ball {
-  translation 1.75485 0.134672 3.98996
+  translation 2.505119172961227 -4.575234630919093 3.7849607630411675
+  rotation 0.04434093639525167 -0.9905768507335783 -0.12958157334412412 1.0999034228039182
   name "ball(4)"
   color 0.843137 0 0
   radius 0.11
   mass 0.2
 }
 Ball {
-  translation 1.75485 0.134672 3.53996
-  name "ball(5)"
+  translation 2.505094691644095 -4.601367230613257 3.204960762713389
+  rotation 0.16282784235513612 -0.9832842750867219 -0.0814808451180437 1.0846133003843499
+  name "ball(1)"
   color 0.843137 0 0
   radius 0.11
   mass 0.2
 }
-Robot {
-  translation 2.68 0.5 0.62
-  children [
-    SliderJoint {
-      jointParameters JointParameters {
-        axis 0 1 0
-      }
-      device [
-        LinearMotor {
-          name "ball top block 0"
-        }
-      ]
-      endPoint Solid {
-        translation 0 0.04 0.48
-        children [
-          Shape {
-            appearance PBRAppearance {
-              metalness 0
-            }
-            geometry Box {
-              size 0.1 0.1 0.01
-            }
-          }
-        ]
-        name "solid(9)"
-        boundingObject Box {
-          size 0.1 0.1 0.01
-        }
-      }
-    }
-    SliderJoint {
-      jointParameters JointParameters {
-        axis 0 1 0
-      }
-      device [
-        LinearMotor {
-          name "ball top block 1"
-        }
-      ]
-      endPoint Solid {
-        translation 0 0.04 0.73
-        children [
-          Shape {
-            appearance PBRAppearance {
-              metalness 0
-            }
-            geometry Box {
-              size 0.1 0.1 0.01
-            }
-          }
-        ]
-        name "solid(3)"
-        boundingObject Box {
-          size 0.1 0.1 0.01
-        }
-      }
-    }
-    SliderJoint {
-      jointParameters JointParameters {
-        axis 0 1 0
-      }
-      device [
-        LinearMotor {
-          name "ball top block 1"
-        }
-      ]
-      endPoint Solid {
-        translation 0 0.04 1
-        children [
-          Shape {
-            appearance PBRAppearance {
-              metalness 0
-            }
-            geometry Box {
-              size 0.1 0.1 0.01
-            }
-          }
-        ]
-        name "solid(4)"
-        boundingObject Box {
-          size 0.1 0.1 0.01
-        }
-      }
-    }
-    Solid {
-      translation 0.17003199999999996 0.15000000000000002 0.07954638000000047
-      rotation -1.4517501665026866e-06 -0.9999999999987793 -5.774795796680745e-07 1.5707925009517185
-      children [
-        Shape {
-          appearance PBRAppearance {
-            metalness 0
-          }
-          geometry Box {
-            size 0.2 0.5 0.05
-          }
-        }
-      ]
-      name "solid(1)"
-      boundingObject Box {
-        size 0.2 0.5 0.05
-      }
-      physics Physics {
-      }
-    }
-    Solid {
-      translation -0.1800320000000002 0.15000000000000002 0.07954648000000042
-      rotation 5.791757246119173e-07 -0.9999999999987542 1.468358719135669e-06 1.570798110389556
-      children [
-        Shape {
-          appearance PBRAppearance {
-            metalness 0
-          }
-          geometry Box {
-            size 0.2 0.5 0.05
-          }
-        }
-      ]
-      name "solid(2)"
-      boundingObject Box {
-        size 0.2 0.5 0.05
-      }
-      physics Physics {
-      }
-    }
-    Solid {
-      translation -0.18002900000000066 0.04999999999999982 0.17939744400000046
-      rotation 0.5773499358561375 0.5773509358560255 -0.577349935856137 -2.0943953071795853
-      children [
-        Shape {
-          appearance PBRAppearance {
-            metalness 0
-          }
-          geometry Box {
-            size 0.3 1.9 0.05
-          }
-        }
-      ]
-      name "solid(7)"
-      boundingObject Box {
-        size 0.2 1.9 0.05
-      }
-      physics Physics {
-      }
-    }
-    Solid {
-      translation 0.15997100028427624 0.05000000000000071 0.17939744397251445
-      rotation 0.5773499358311838 0.5773509358347605 -0.5773499359023557 -2.094395307114815
-      children [
-        Shape {
-          appearance PBRAppearance {
-            metalness 0
-          }
-          geometry Box {
-            size 0.3 1.9 0.05
-          }
-        }
-      ]
-      name "solid(8)"
-      boundingObject Box {
-        size 0.2 1.9 0.05
-      }
-      physics Physics {
-      }
-    }
-    Solid {
-      translation -0.01003070000000017 -0.12 0.7293911400000005
-      rotation 1 0 0 1.5708000000000002
-      children [
-        Shape {
-          appearance PBRAppearance {
-            metalness 0
-          }
-          geometry Box {
-            size 0.4 1.5 0.05
-          }
-        }
-      ]
-      name "solid(10)"
-      boundingObject Box {
-        size 0.4 1.5 0.05
-      }
-      physics Physics {
-      }
-    }
-    Solid {
-      translation -0.01003070000000017 0.17000000000000004 0.8794327600000008
-      rotation 1 0 0 1.5708000000000002
-      children [
-        Shape {
-          appearance PBRAppearance {
-            metalness 0
-          }
-          geometry Box {
-            size 0.4 0.5 0.05
-          }
-        }
-      ]
-      name "solid(11)"
-      boundingObject Box {
-        size 0.4 0.5 0.05
-      }
-      physics Physics {
-      }
-    }
-  ]
-  name "caddie"
-  controller "<none>"
+Ball {
+  translation 2.5051116098143877 -4.5748840416535925 3.5049607600004387
+  rotation -0.17738551635515487 -0.9311575405847168 0.3185592773717892 2.4095060927858634
+  name "ball(5)"
+  color 0.843137 0 0
+  radius 0.11
+  mass 0.2
 }

@@ -1,7 +1,7 @@
 """test controller."""
 
 # You may need to import some classes of the controller module. Ex:
-#  from controller import Robot, Motor, DistanceSensor
+ # from controller import Robot, Motor, DistanceSensor
 from controller import Robot, Motor
 from math import pi, sin
 from enum import Enum
@@ -15,10 +15,14 @@ arm_motor = robot.getDevice("rotational motor")
 
 top_blocks = []
 
-for i in range(2):
+for i in range(3):
     top_blocks.append(robot.getDevice(f"ball top block {i}"))
 
 # arm_motor.setPosition(1.0)
+
+for i in range(3):
+    top_blocks[i].setPosition(0.3)
+    robot.step(128*16)
 
 kij_position.enable(1000)
 
@@ -47,11 +51,11 @@ while robot.step(TIME_STEP) != -1:
     if pos >= 3.13 or pos <= -3.13:
         to_pos = -to_pos
     kij_motor.setPosition(to_pos)   
-    #if kij_motor.
-    #position = angle.set_val(t)
-    #print(position)
-    #kij_motor.setPosition(position)
-    #kij_motor.setVelocity(10.0)
-    #t += TIME_STEP / 100.0
+    # #if kij_motor.
+    # #position = angle.set_val(t)
+    # #print(position)
+    # #kij_motor.setPosition(position)
+    # #kij_motor.setVelocity(10.0)
+    # #t += TIME_STEP / 100.0
 
-    pass
+    # pass
