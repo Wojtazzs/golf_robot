@@ -43,26 +43,50 @@ for i in range(3):
 _counter = 0
 def get_next_ball():
     global _counter
-    print(top_blocks[_counter].name)
 
     top_blocks[_counter].setPosition(0.13)
     # print(f"Remove {i}")
     # robot.getFromDef("ROBOT").remove()
     if _counter <= 2:
         _counter = _counter + 1
-    robot.step(16*128*timestep)
+    robot.step(32*128*timestep)
+    kamera.saveImage(f"test{_counter}.jpg", 50)
+    
+    img = kamera.getImage()
+    
+    r = kamera.imageGetRed(img, 64, 16, 32)
+    g = kamera.imageGetGreen(img, 64, 16, 32)
+    b = kamera.imageGetBlue(img, 64, 16, 32)
+    
+    print(f"r{r}, g{g}, b{b}")
+    robot.step(32*128*timestep)
+    
+    return { "r": r, "g": g, "b": b}
+
+
+def reales_ball():
     final_block.setPosition(-0.3)
     robot.step(16*128*timestep)
     final_block.setPosition(0.3)
-    robot.step(16*128*timestep)
+    robot.step(timestep)
 
+position_counter = 0
 
 def arm_turn_right():
+    global position_counter
+    if position_counter % 2 == 0:    
+        position_counter = position_counter + 1
+    else:
+        return None
     arm_motor.setPosition(-1.57)
     robot.step(512*timestep)
     
 def arm_turn_left():
-    print("turn left")
+    global position_counter
+    if position_counter % 2 != 0:    
+        position_counter = position_counter - 1
+    else:
+        return None
     arm_motor.setPosition(0.0)
     robot.step(512*timestep)
 
@@ -84,17 +108,23 @@ def swing():
     print("halt")
 
 
-arm_turn_right()
-arm_turn_left()
+# piłki zielone #00d700 char: g77
+# piłki czerwone #d70000 char: r72
 
-get_next_ball()
-get_next_ball()
-get_next_ball()
+# arm_turn_right()
+# arm_turn_right()
+
+# get_next_ball()
+# reales_ball()
+# get_next_ball()
+# reales_ball()
+# get_next_ball()
+# reales_ball()
 
 
 # swing()
-kamera.saveImage("test.jpg", 50)
-print("click")
+# kamera.saveImage("test.jpg", 50)
+# print("click")
 
 # You should insert a getDevice-like function in order to get the
 # instance of a device of the robot. Something like:
@@ -105,6 +135,23 @@ print("click")
 # Main loop:
 # - perform simulation steps until Webots is stopping the controller
 while robot.step(timestep) != -1:
+    color_dict = get_next_ball()
+    if color_dict["r"] < 50:
+        print("G")
+        if position_counter % 2 == 0:
+            arm_turn_right()
+        reales_ball()
+        swing()
+    elif color_dict["r"] >= 50:
+        print("R")
+        if position_counter % 2 != 0:
+            arm_turn_left()
+        reales_ball()
+        swing()
+    else:
+        print("N")
+        continue
+
     # print(kij_position.getValue())
     # Read the sensors:
     # Enter here functions to read sensor data, like:
