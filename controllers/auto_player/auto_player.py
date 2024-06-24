@@ -39,15 +39,18 @@ for i in range(3):
     top_blocks.append(robot.getDevice(f"ball top block {i}"))
 
 # arm_motor.setPosition(1.0)
+position_counter = 0
 
 _counter = 0
+
 def get_next_ball():
     global _counter
 
+    print(f"len(top_blocks) - {_counter}")
     top_blocks[_counter].setPosition(0.13)
     # print(f"Remove {i}")
     # robot.getFromDef("ROBOT").remove()
-    if _counter <= 2:
+    if _counter <= 1:
         _counter = _counter + 1
     robot.step(32*128*timestep)
     kamera.saveImage(f"test{_counter}.jpg", 50)
@@ -68,9 +71,7 @@ def reales_ball():
     final_block.setPosition(-0.3)
     robot.step(16*128*timestep)
     final_block.setPosition(0.3)
-    robot.step(timestep)
-
-position_counter = 0
+    robot.step(16*timestep)
 
 def arm_turn_right():
     global position_counter
@@ -91,7 +92,7 @@ def arm_turn_left():
     robot.step(512*timestep)
 
 def swing():
-    kij_motor.setVelocity(1.0)
+    kij_motor.setVelocity(1.5)
     robot.step(timestep)
     kij_motor.setPosition(0.0)
     robot.step(128*timestep)
@@ -142,7 +143,7 @@ while robot.step(timestep) != -1:
             arm_turn_right()
         reales_ball()
         swing()
-    elif color_dict["r"] >= 50:
+    elif color_dict["r"] >= 50 and color_dict["g"] <= 60:
         print("R")
         if position_counter % 2 != 0:
             arm_turn_left()
